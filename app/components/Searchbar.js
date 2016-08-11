@@ -40,9 +40,9 @@ class Searchbar extends React.Component {
       <nav className='navbar'>
         <form ref='searchForm' className='navbar-form' onSubmit={this.handleSubmit.bind(this)}>
           <div className='input-group'>
-            <p>{'jquery'}</p>
+            <h3>Type GitHub username and his repo</h3>
+            <p>{'(i.e. jquery/jquery)'}</p>
             <input name='username' type='text' className='form-control' placeholder={'Username...'} />
-            {'  '}
             <input name='repo' type='text' className='form-control' placeholder={'Repo...'} onChange={SearchbarActions.updateSearchQuery} />
             <span className='input-group-btn'>
               <button className='btn' onClick={this.handleSubmit.bind(this)}><span className='glyphicon glyphicon-search'></span>Search</button>

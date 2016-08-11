@@ -18,6 +18,7 @@ class Home extends React.Component {
   }
 
   componentWillUnmount() {
+    SearchbarStore.listen(this.onChange);
     HomeStore.unlisten(this.onChange);
   }
 
@@ -31,9 +32,9 @@ class Home extends React.Component {
     	console.log(typeof issue.created_at);
       return (
        	<tr key={issue.id} className='issue-row'>
-         	<th> {issue.id} </th>
-         	<th> {issue.title} </th>
-         	<th> {new Date(issue.created_at).toLocaleDateString()}</th>
+         	<td> {issue.id} </td>
+         	<td> {issue.title} </td>
+         	<td> {new Date(issue.created_at).toLocaleDateString()}</td>
        	</tr>
       );
     });
@@ -44,7 +45,7 @@ class Home extends React.Component {
         <div className='row'>
         	<table className='isuue-table'>
         		<thead>
-        			<tr key='issue-table-head'> <th> {'ID'} </th> <th> {'Title'} </th> <th> {'Date'} </th> </tr>
+        			<tr key='issue-table-head'> <th id="issue-id"> {'ID'} </th> <th id="issue-title"> {'Title'} </th> <th id="issue-date"> {'Date'} </th> </tr>
         		</thead>
         		<tbody>
           		{IssuesNodes}

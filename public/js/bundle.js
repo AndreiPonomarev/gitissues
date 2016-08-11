@@ -199,6 +199,7 @@ var Home = function (_React$Component) {
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
+      _SearchbarStore2.default.listen(this.onChange);
       _HomeStore2.default.unlisten(this.onChange);
     }
   }, {
@@ -216,21 +217,21 @@ var Home = function (_React$Component) {
           'tr',
           { key: issue.id, className: 'issue-row' },
           _react2.default.createElement(
-            'th',
+            'td',
             null,
             ' ',
             issue.id,
             ' '
           ),
           _react2.default.createElement(
-            'th',
+            'td',
             null,
             ' ',
             issue.title,
             ' '
           ),
           _react2.default.createElement(
-            'th',
+            'td',
             null,
             ' ',
             new Date(issue.created_at).toLocaleDateString()
@@ -256,7 +257,7 @@ var Home = function (_React$Component) {
                 ' ',
                 _react2.default.createElement(
                   'th',
-                  null,
+                  { id: 'issue-id' },
                   ' ',
                   'ID',
                   ' '
@@ -264,7 +265,7 @@ var Home = function (_React$Component) {
                 ' ',
                 _react2.default.createElement(
                   'th',
-                  null,
+                  { id: 'issue-title' },
                   ' ',
                   'Title',
                   ' '
@@ -272,7 +273,7 @@ var Home = function (_React$Component) {
                 ' ',
                 _react2.default.createElement(
                   'th',
-                  null,
+                  { id: 'issue-date' },
                   ' ',
                   'Date',
                   ' '
@@ -382,12 +383,16 @@ var Searchbar = function (_React$Component) {
             'div',
             { className: 'input-group' },
             _react2.default.createElement(
+              'h3',
+              null,
+              'Type GitHub username and his repo'
+            ),
+            _react2.default.createElement(
               'p',
               null,
-              'jquery'
+              '(i.e. jquery/jquery)'
             ),
             _react2.default.createElement('input', { name: 'username', type: 'text', className: 'form-control', placeholder: 'Username...' }),
-            '  ',
             _react2.default.createElement('input', { name: 'repo', type: 'text', className: 'form-control', placeholder: 'Repo...', onChange: _SearchbarActions2.default.updateSearchQuery }),
             _react2.default.createElement(
               'span',
